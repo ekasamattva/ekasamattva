@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Eka Samattva - Calm. Strong. Balanced.</title>
+  <meta name="description" content="Eka Samattva Yoga — friendly online yoga classes. Book a class, view schedule, meet the instructor." />
+
+  <!-- Font preload + non-blocking load -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" as="style" onload="this.rel='stylesheet'">
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  </noscript>
+
+  <!-- Preload hero logo (helps LCP) -->
+  <link rel="preload" as="image" href="Logo2.png">
+
+  <style>
+    :root{
+      --bg:#fffaf6; --card:#ffffff; --muted:#6b7280; --accent1:#ff9a3c; --accent2:#ff6b6b; --text:#0f172a;
+      --radius:14px; --container:1100px; --gutter:18px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, 'Helvetica Neue', Arial;
+      color:var(--text); background:linear-gradient(180deg, #fffaf6 0%, #fffefc 100%);
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; line-height:1.45;
+    }
+
+    /* Container */
+    .wrap{max-width:var(--container); margin:28px auto; padding:20px 16px;}
+
+    /* Hero */
+    .hero-banner{width:100%; border-radius:16px; overflow:hidden; box-shadow:0 12px 30px rgba(15,23,42,0.08); margin-bottom:22px; position:relative;}
+    .hero-inner{display:flex; gap:18px; align-items:center; padding:18px}
+    .logo-img{width:120px; height:auto; border-radius:50%; box-shadow: rgba(15,23,42,0.06); display:block}
+    .brand { display:flex; gap:14px; align-items:center; flex:1; min-width:0; }
+    .logo { width:64px; height:64px; border-radius:12px; background:linear-gradient(135deg,var(--accent1),var(--accent2)); display:flex; align-items:center; justify-content:center; color:white; font-weight:700; font-size:20px; flex:0 0 64px; }
+    h1{margin:0; font-size:28px}
+    p.lead{margin:6px 0 0; color:var(--muted)}
+    .cta-row{display:flex; gap:12px; margin-top:8px; flex-wrap:wrap}
+    .btn{display:inline-block; padding:10px 14px; border-radius:10px; text-decoration:none; font-weight:600}
+    .btn-primary{background:linear-gradient(90deg,var(--accent1),var(--accent2)); color:white}
+
+    /* banner contact (desktop) */
+    .banner-contact {
+      position:absolute;
+      top:20px;
+      right:20px;
+      background:rgba(255,255,255,0.94);
+      border-radius:10px;
+      padding:8px 12px;
+      box-shadow:0 6px 18px rgba(15,23,42,0.08);
+      display:flex;
+      gap:10px;
+      align-items:center;
+      z-index:10;
+      min-width:220px;
+    }
+    .banner-contact .label { font-size:13px; color:#374151; }
+    .banner-contact .phone {
+      font-weight:700;
+      color:var(--accent2);
+      font-size:16px;
+      display:inline-block;
+      padding:8px 10px;
+      border-radius:8px;
+      text-decoration:none;
+    }
+    .banner-contact .phone:focus,
+    .banner-contact .phone:hover { outline:2px solid rgba(255,107,107,0.12); text-decoration:none; }
+
+    /* Layout */
+    .site-hero { display:grid; grid-template-columns: 1fr; gap:18px; align-items:start; margin-top:18px; }
+    @media(min-width:900px){ .site-hero{grid-template-columns:1fr 360px} }
+
+    .card{background:var(--card); border-radius:var(--radius); padding:18px; box-shadow:0 6px 18px rgba(15,23,42,0.06)}
+    .form-embed{position:relative; padding-bottom:56.25%; height:0; overflow:hidden}
+    .form-embed iframe{position:absolute; top:0; left:0; width:100%; height:100%; border:0}
+
+    .muted{color:var(--muted)}
+    .contact-row{display:flex; flex-direction:column; gap:8px}
+
+    /* Mobile-specific: stack banner-contact and make tap target larger */
+    @media (max-width: 640px) {
+      .hero-inner{flex-direction:column; align-items:flex-start; gap:12px; padding:14px}
+      .banner-contact {
+        position:static;
+        display:flex;
+        flex-direction:row;
+        justify-content:space-between;
+        margin:12px 0;
+        box-shadow:none;
+        background:transparent;
+        padding:6px 0;
+        min-width:0;
+        width:100%;
+      }
+      .banner-contact .label { font-size:13px; }
+      .banner-contact .phone {
+        font-size:18px;
+        padding:10px 12px;
+        white-space:normal;
+        word-break:break-word;
+      }
+
+      /* sticky call button on mobile */
+      .call-sticky {
+        display:block;
+        position:fixed;
+        right:14px;
+        bottom:14px;
+        z-index:9999;
+      }
+    }
+
+    /* hide sticky by default (desktop) */
+    .call-sticky{display:none}
+
+    /* small screens: make links wrap nicely */
+    a { word-break: break-word; }
+  </style>
+</head>
+<body>
+
+  <div class="wrap">
+    <section class="hero-banner" aria-hidden="false" style="background: linear-gradient(90deg, rgba(255,154,60,0.12), rgba(255,107,107,0.06));">
+      <div class="hero-inner">
+
+        <!-- logo (lazy decode) -->
+        <img src="Logo2.png" alt="Eka Samattva Logo" class="logo-img" width="240" height="240" loading="eager" decoding="async" />
+
+        <div class="brand">
+          <div class="logo" aria-hidden="true">ESY</div>
+          <div style="min-width:0">
+            <h1>Eka Samattva Yoga</h1>
+            <p class="lead">Calm. Strong. Balanced — friendly classes for every body.</p>
+            <div class="cta-row">
+              <a class="btn btn-primary" href="#book">Book a class</a>
+              <a class="btn btn-primary" href="#schedule">View schedule</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- contact block (desktop inline, mobile stacked) -->
+        <div class="banner-contact" role="group" aria-label="Contact information">
+          <div>
+            <div class="label">Contact Us</div>
+          </div>
+          <div style="border-left:1px solid #f3f4f6;height:36px" class="divider" aria-hidden="true"></div>
+          <!-- phone: proper tel: link and larger hit area on mobile -->
+          <a class="phone" href="tel:+917978658608" aria-label="Call Eka Samattva Yoga">+91 79786 58608</a>
+        </div>
+
+      </div>
+    </section>
+
+    <header class="site-hero">
+
+      <div>
+        <section id="about"><div class="card"><h3>About the studio</h3><p class="muted">Eka Samattva Yoga is a small, welcoming Online studio offering morning classes aimed to build strength, flexibility and calm. Led by <strong>Itishree</strong>, 300h certified teacher.</p></div></section>
+
+        <section id="schedule" style="margin-top:16px"><div class="card"><h3>Weekly schedule</h3><ul class="schedule muted"><li><strong>Mon - Fri</strong> — 6:30 AM — Morning Flow (60 min)</li></ul></div></section>
+
+        <section id="aboutperson" style="margin-top:18px"><div class="card"><h3>About Itishree</h3><p class="muted">Itishree combines 300-hour training with therapeutic anatomy knowledge certified from SVYASA with YIC & YCB. Her classes focus on alignment, breath, and conscious sequencing. She offers private sessions and small-group workshops.</p></div></section>
+      </div>
+
+      <aside>
+        <div class="card">
+          <h3 id="book">Book a class</h3>
+
+          <!-- Lazy-loaded Google Form (data-src) - will load when scrolled near -->
+          <div id="googleFormWrapper" data-src="https://docs.google.com/forms/d/e/1FAIpQLSdio32RDmk0Xg5MmcRuEK5oJyjYXRseOHqsDDoooGbb2wovNA/viewform?embedded=true">
+            <!-- lightweight fallback link shown until iframe loads -->
+            <div class="card contact-row" style="margin:0;padding:12px;border-radius:10px">
+              <div>
+                <p class="muted" style="margin:0">ESY - Enrollment form: <a href="https://docs.google.com/forms/d/e/1FAIpQLSdio32RDmk0Xg5MmcRuEK5oJyjYXRseOHqsDDoooGbb2wovNA/viewform?usp=header">Open form</a></p>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:12px; font-size:13px; color:var(--muted)">
+            <strong>Studio</strong><br />Online • Google Meet link will be sent after booking<br />
+          </div>
+        </div>
+      </aside>
+
+    </header>
+
+    <section style="margin-top:18px">
+      <div class="grid-two">
+        <div class="card contact-row">
+          <div>
+            <h3>Find us</h3>
+            <p class="muted">Google Profile: <a href="https://share.google/4IdsricdHr5phly9t">Google Map profile</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer style="margin-top:18px">
+      <p>© Eka Samattva Yoga — Built with ❤️ • <a href="#">Privacy</a> • <a href="#">Terms</a></p>
+    </footer>
+  </div>
+
+  <!-- Sticky call button for mobile (shown only on small screens via CSS) -->
+  <a class="call-sticky" href="tel:+917978658608" aria-hidden="false" title="Call Eka Samattva Yoga" style="display:none">
+    <button style="background:linear-gradient(90deg,var(--accent1),var(--accent2)); border:none; color:white; padding:12px 14px; border-radius:999px; box-shadow:0 10px 20px rgba(15,23,42,0.15); font-weight:700;">Call</button>
+  </a>
+
+  <script>
+    // Minimal booking handler for demo only.
+    function submitBooking(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const cls = document.getElementById('classSelect').value;
+      alert('Thanks '+name+" — request sent for "+cls+". We'll email/WhatsApp you at " + email + '.');
+      console.log({name,email,cls});
+      document.getElementById('bookingForm').reset();
+      return false;
+    }
+
+    // Helper: inject Google Form iframe when you have the embed src
+    // Usage: set window.GOOGLE_FORM_SRC = 'https://docs.google.com/forms/d/e/FORM_ID/viewform?embedded=true'; then call injectGoogleForm()
+    function injectGoogleForm(){
+      const src = window.GOOGLE_FORM_SRC;
+      if(!src) return;
+      const wrapper = document.getElementById('googleFormWrapper');
+      wrapper.innerHTML = '<div class="form-embed"><iframe src="'+src+'" title="Book a class" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe></div>';
+    }
+
+    // Example (use in browser console):
+    // window.GOOGLE_FORM_SRC = 'https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true'; injectGoogleForm();
+  </script>
+
+</body>
+</html>
